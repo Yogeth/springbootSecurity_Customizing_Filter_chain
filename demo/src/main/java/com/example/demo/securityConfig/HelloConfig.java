@@ -11,7 +11,7 @@ public class HelloConfig{
   {
     http.csrf(customizer->customizer.disable());
     http.authorizeHttpRequests(request->request.anyRequest().authenticated());
-    http.formLogin(customizer.withDefaults());
+    http.formLogin(Customizer.withDefaults());
     
     return http.build();
     
