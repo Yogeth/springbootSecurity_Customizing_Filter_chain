@@ -10,7 +10,7 @@ public class HelloConfig{
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception
   {
     http.csrf(customizer->customizer.disable());
-    http.authorizeHttpRequest(request->request.anyRequest().authendicated());
+    http.authorizeHttpRequest(request->request.anyRequest().authenticated());
     
     return http.build();
     
