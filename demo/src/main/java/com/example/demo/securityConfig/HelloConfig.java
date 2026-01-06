@@ -7,6 +7,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Configuration
 public class HelloConfig{
@@ -24,12 +25,12 @@ public class HelloConfig{
   
   @Bean 
   public UserDetailsService userDetailsService(){
-    User user1=User.username("Wayne")
+    UserDetails user1=User.username("Wayne")
                    .password(9874)
                    .roles("ADMIN")
                    .build();
      
-     User user2=User.username("Bruce")
+     UserDetails user2=User.username("Bruce")
                    .password(9884)
                    .roles("USER")
                    .build();              
