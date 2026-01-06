@@ -26,15 +26,15 @@ public class HelloConfig{
   @Bean 
   public UserDetailsService userDetailsService(){
     UserDetails user1=User.username("Wayne")
-                   .password(9874)
+                   .password("9874")
                    .roles("ADMIN")
                    .build();
      
      UserDetails user2=User.username("Bruce")
-                   .password(9884)
+                   .password("9884")
                    .roles("USER")
                    .build();              
                    
-    return InMemoryUserDetailsManager(user1,user2);
+    return new  InMemoryUserDetailsManager(user1,user2);
   }
 }
