@@ -26,12 +26,12 @@ public class HelloConfig{
   @Bean 
   public UserDetailsService userDetailsService(){
     UserDetails user1=User.username("Wayne")
-                   .password("9874")
+                   .password("{noop}9874")
                    .roles("ADMIN")
                    .build();
      
      UserDetails user2=User.username("Bruce")
-                   .password("9884")
+                   .password("{noop}9884")
                    .roles("USER")
                    .build();              
                    
