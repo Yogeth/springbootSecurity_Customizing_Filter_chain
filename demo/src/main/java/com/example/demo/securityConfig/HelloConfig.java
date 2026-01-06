@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.core.userdetails.UserDetails;
+import java.util.*;
 
 @Configuration
 public class HelloConfig{
@@ -16,15 +17,16 @@ public class HelloConfig{
   {
     http.csrf(customizer->customizer.disable());
     http.authorizeHttpRequests(request->request.anyRequest().authenticated());
-    http.formLogin(Customizer.withDefaults());
+  //  http.formLogin(Customizer.withDefaults());
     http.httpBasic(Customizer.withDefaults());
-  //  http.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+    http.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
     return http.build();
     
   }
   
   @Bean 
   public UserDetailsService userDetailsService(){
+    
     UserDetails user1=User.withUsername("Wayne")
                    .password("{noop}9874")
                    .roles("ADMIN")
@@ -35,6 +37,9 @@ public class HelloConfig{
                    .roles("USER")
                    .build();              
                    
-    return new  InMemoryUserDetailsManager(user1,user2);
+   List<UserDetails> list=new ArrayList<>();
+       list.add(user1);
+       list.add(user2);
+    return new  InMemoryUserDetailsManager(list);
   }
 }
