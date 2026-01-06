@@ -18,7 +18,7 @@ public class HelloConfig{
     http.authorizeHttpRequests(request->request.anyRequest().authenticated());
     http.formLogin(Customizer.withDefaults());
     http.httpBasic(Customizer.withDefaults());
-    http.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+  //  http.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
     return http.build();
     
   }
